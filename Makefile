@@ -1,20 +1,21 @@
 NAME		:= so_long
 
-LIBFT_DIR	:= libft
-LIBFT_NAME	:= libft.a
-LIBFT		:= $(LIBFT_DIR)/$(LIBFT_NAME)
-
-GNL_DIR		:= get_next_line
-GNL_NAME	:= libgnl.a
-GNL			:= $(GNL_DIR)/$(GNL_NAME)
-
-MLX_DIR		:= minilibx-linux
-MLX_NAME	:= libmlx.a
-MLX			:= $(MLX_DIR)/$(MLX_NAME)
-
+LIBDIR		:= lib
 SRCDIR		:= src
 OBJDIR		:= obj
 INCDIR		:= include
+
+LIBFT_DIR	:= $(LIBDIR)/libft
+LIBFT_NAME	:= libft.a
+LIBFT		:= $(LIBFT_DIR)/$(LIBFT_NAME)
+
+GNL_DIR		:= $(LIBDIR)/get_next_line
+GNL_NAME	:= libgnl.a
+GNL			:= $(GNL_DIR)/$(GNL_NAME)
+
+MLX_DIR		:= $(LIBDIR)/minilibx-linux
+MLX_NAME	:= libmlx.a
+MLX			:= $(MLX_DIR)/$(MLX_NAME)
 
 SRCS		:= \
 	$(SRCDIR)/main.c \
