@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_map.c                                      :+:      :+:    :+:   */
+/*   extension.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcapistr <marvin@42porto.com>              +#+  +:+       +#+        */
+/*   By: jcapistr <jcapistr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 17:39:13 by jcapistr          #+#    #+#             */
-/*   Updated: 2023/05/30 17:39:14 by jcapistr         ###   ########.fr       */
+/*   Created: 2023/05/30 17:41:24 by jcapistr          #+#    #+#             */
+/*   Updated: 2023/05/30 17:41:25 by jcapistr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	ft_free_map(char **map)
+int	has_extension(char *filename, char *extension)
 {
-	int	i;
+	char	*dot;
 
-	i = 0;
-	while (map[i] != NULL)
-		free(map[i++]);
-	free(map);
+	dot = ft_strrchr(filename, '.');
+	return (dot && !ft_strncmp(dot + 1, extension, ft_strlen(extension) + 1));
 }

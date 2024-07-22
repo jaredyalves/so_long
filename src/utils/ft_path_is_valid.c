@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	ft_check_path(t_game *game, int x, int y, char **path)
+static int	ft_check_path(t_config *game, int x, int y, char **path)
 {
 	static int	coins = 0;
 	static int	has_exit = 0;
@@ -49,7 +49,7 @@ static void	ft_delete(char **matrix)
 	free(matrix);
 }
 
-int	ft_path_is_valid(t_game *game)
+int	ft_path_is_valid(t_config *game)
 {
 	char	**tmp;
 	int		i;

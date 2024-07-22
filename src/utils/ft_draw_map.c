@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	ft_draw_image(t_game *game, void *image, int x, int y)
+static void	ft_draw_image(t_config *game, void *image, int x, int y)
 {
 	if (image != NULL)
 		mlx_put_image_to_window(game->mlx, game->win, image, x * 32, y * 32);
@@ -20,14 +20,14 @@ static void	ft_draw_image(t_game *game, void *image, int x, int y)
 		ft_error("Image could not be loaded.\n");
 }
 
-static void	ft_draw_player(t_game *game, void *image, int x, int y)
+static void	ft_draw_player(t_config *game, void *image, int x, int y)
 {
 	game->p_pos_x = x;
 	game->p_pos_y = y;
 	ft_draw_image(game, image, x, y);
 }
 
-static void	ft_draw_exit(t_game *game, int x, int y)
+static void	ft_draw_exit(t_config *game, int x, int y)
 {
 	if (game->c_count == 0)
 	{
@@ -38,7 +38,7 @@ static void	ft_draw_exit(t_game *game, int x, int y)
 	ft_draw_image(game, game->img_e, x, y);
 }
 
-int	ft_draw_map(t_game *game)
+int	ft_draw_map(t_config *game)
 {
 	int	y;
 	int	x;

@@ -19,17 +19,12 @@ MLX			:= $(MLX_DIR)/$(MLX_NAME)
 
 SRCS		:= \
 	$(SRCDIR)/main.c \
-	$(SRCDIR)/utils/ft_check_ext.c \
-	$(SRCDIR)/utils/ft_check_map.c \
-	$(SRCDIR)/utils/ft_draw_map.c \
-	$(SRCDIR)/utils/ft_error.c \
-	$(SRCDIR)/utils/ft_exit.c \
-	$(SRCDIR)/utils/ft_free_map.c \
-	$(SRCDIR)/utils/ft_game_init.c \
-	$(SRCDIR)/utils/ft_game_play.c \
-	$(SRCDIR)/utils/ft_move_player.c \
-	$(SRCDIR)/utils/ft_path_is_valid.c \
-	$(SRCDIR)/utils/ft_read_map.c \
+	$(SRCDIR)/check/check_args.c \
+	$(SRCDIR)/parse/parse_file.c \
+	$(SRCDIR)/parse/parse_line.c \
+	$(SRCDIR)/utils/config.c \
+	$(SRCDIR)/utils/exit.c \
+	$(SRCDIR)/utils/extension.c \
 
 OBJS		:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 INCS		:= \
@@ -37,7 +32,7 @@ INCS		:= \
 
 CC			:= cc
 INCLUDES	:= -I$(INCDIR) -I$(LIBFT_DIR)/include -I$(GNL_DIR)/include -I$(MLX_DIR)
-CFLAGS		:= -O3 -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS		:= -g -Wall -Werror -Wextra $(INCLUDES)
 LDFLAGS		:= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
 RM			:= rm

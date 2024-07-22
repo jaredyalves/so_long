@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "libft.h"
 
 int	ft_check_ext(char *argv)
 {

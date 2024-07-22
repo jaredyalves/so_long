@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	ft_is_retangular(t_game *game)
+static int	ft_is_retangular(t_config *game)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ static int	ft_is_retangular(t_game *game)
 	return (1);
 }
 
-static int	ft_is_around_wall(t_game *game)
+static int	ft_is_around_wall(t_config *game)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,7 @@ static int	ft_is_around_wall(t_game *game)
 	return (1);
 }
 
-static int	ft_is_pec(t_game *game)
+static int	ft_is_pec(t_config *game)
 {
 	int	i;
 	int	j;
@@ -84,7 +84,7 @@ static int	ft_is_pec(t_game *game)
 	return (1);
 }
 
-static int	ft_is_valid(t_game *game)
+static int	ft_is_valid(t_config *game)
 {
 	int	i;
 	int	j;
@@ -106,7 +106,7 @@ static int	ft_is_valid(t_game *game)
 	return (1);
 }
 
-int	ft_check_map(t_game *game)
+int	ft_check_map(t_config *game)
 {
 	if (ft_is_retangular(game) && ft_is_around_wall(game) && ft_is_pec(game)
 		&& ft_is_valid(game) && ft_path_is_valid(game))

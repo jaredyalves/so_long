@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcapistr <jcapistr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,40 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "so_long.h"
 
-#include <stdio.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-int main(int argc, char **argv)
+void	parse_file(char *filename)
 {
-	check_args(argc, argv);
-	init_config();
-	parse_file(argv[1]);
-	// DEBUG
-	printf("-- Map\n");
-	for (int i = 0; i < get_config()->height; ++i)
-	{
-		printf("%s\n", get_config()->map[i]);
-	}
-	// DEBUG
-	free_config();
-}
+	t_config	*cfg;
+	int			fd;
 
-// t_config	game;
-//
-// if (argc == 2)
-// {
-// 	ft_bzero(&game, sizeof(t_config));
-// 	game.map = ft_read_map(&game, argv[1]);
-// 	if (ft_check_map(&game) && ft_check_ext(argv[1]))
-// 	{
-// 		ft_game_init(&game);
-// 		ft_game_play(&game);
-// 		mlx_loop(game.mlx);
-// 	}
-// 	else
-// 		ft_exit("Map is not valid");
-// }
-// else
-// 	ft_exit("You must provide a map");
-// return (0);
+	cfg = get_config();
+	fd = open(filename, O_RDONLY);
+	while (1)
+	{
+		cfg->p_line = get_next_line(fd);
+		if (cfg->p_line == NULL)
+			break ;
+		parse_line(cfg->p_line);
+		free(cfg->p_line);
+		cfg->p_line = NULL;
+	}
+	close(fd);
+}

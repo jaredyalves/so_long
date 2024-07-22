@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcapistr <marvin@42porto.com>              +#+  +:+       +#+        */
+/*   By: jcapistr <jcapistr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:39:06 by jcapistr          #+#    #+#             */
 /*   Updated: 2023/05/30 17:39:07 by jcapistr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "so_long.h"
 
-int	ft_exit(t_game *game)
+#include <stdlib.h>
+
+int	ft_exit(char *error)
 {
-	ft_free_map(game->map);
-	mlx_destroy_image(game->mlx, game->img_0);
-	mlx_destroy_image(game->mlx, game->img_1);
-	mlx_destroy_image(game->mlx, game->img_c);
-	mlx_destroy_image(game->mlx, game->img_e);
-	mlx_destroy_image(game->mlx, game->img_p);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
+	free_config();
+	if (error)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd(error, 2);
+		ft_putstr_fd("\n", 2);
+		exit(EXIT_FAILURE);
+	}
 	exit(EXIT_SUCCESS);
 }

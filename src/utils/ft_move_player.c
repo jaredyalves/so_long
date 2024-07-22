@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	ft_update_player(char key, t_game *game)
+static void	ft_update_player(char key, t_config *game)
 {
 	mlx_destroy_image(game->mlx, game->img_p);
 	if (key == 'w')
@@ -29,7 +29,7 @@ static void	ft_update_player(char key, t_game *game)
 				&game->img_width, &game->img_height);
 }
 
-void	ft_move_up(t_game *game)
+void	ft_move_up(t_config *game)
 {
 	ft_update_player('w', game);
 	if (game->map[game->p_pos_y][game->p_pos_x] == 'E' && game->c_count == 0)
@@ -55,7 +55,7 @@ void	ft_move_up(t_game *game)
 	}
 }
 
-void	ft_move_down(t_game *game)
+void	ft_move_down(t_config *game)
 {
 	ft_update_player('s', game);
 	if (game->map[game->p_pos_y][game->p_pos_x] == 'E' && game->c_count == 0)
@@ -81,7 +81,7 @@ void	ft_move_down(t_game *game)
 	}
 }
 
-void	ft_move_left(t_game *game)
+void	ft_move_left(t_config *game)
 {
 	ft_update_player('a', game);
 	if (game->map[game->p_pos_y][game->p_pos_x] == 'E' && game->c_count == 0)
@@ -107,7 +107,7 @@ void	ft_move_left(t_game *game)
 	}
 }
 
-void	ft_move_right(t_game *game)
+void	ft_move_right(t_config *game)
 {
 	ft_update_player('d', game);
 	if (game->map[game->p_pos_y][game->p_pos_x] == 'E' && game->c_count == 0)

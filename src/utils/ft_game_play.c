@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	ft_events(int keycode, t_game *game)
+static void	ft_events(int keycode, t_config *game)
 {
 	if (keycode == KEY_W || keycode == KEY_UP)
 	{
@@ -36,7 +36,7 @@ static void	ft_events(int keycode, t_game *game)
 	}
 }
 
-static int	ft_keypress(int keycode, t_game *game)
+static int	ft_keypress(int keycode, t_config *game)
 {
 	if (keycode == KEY_ESC || keycode == KEY_Q)
 		ft_exit(game);

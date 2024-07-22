@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcapistr <jcapistr@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,38 +12,21 @@
 
 #include "so_long.h"
 
-#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-int main(int argc, char **argv)
+void	check_args(int argc, char **argv)
 {
-	check_args(argc, argv);
-	init_config();
-	parse_file(argv[1]);
-	// DEBUG
-	printf("-- Map\n");
-	for (int i = 0; i < get_config()->height; ++i)
-	{
-		printf("%s\n", get_config()->map[i]);
-	}
-	// DEBUG
-	free_config();
-}
+	int	fd;
 
-// t_config	game;
-//
-// if (argc == 2)
-// {
-// 	ft_bzero(&game, sizeof(t_config));
-// 	game.map = ft_read_map(&game, argv[1]);
-// 	if (ft_check_map(&game) && ft_check_ext(argv[1]))
-// 	{
-// 		ft_game_init(&game);
-// 		ft_game_play(&game);
-// 		mlx_loop(game.mlx);
-// 	}
-// 	else
-// 		ft_exit("Map is not valid");
-// }
-// else
-// 	ft_exit("You must provide a map");
-// return (0);
+	if (argc == 1)
+		ft_exit("Missing .ber file");
+	if (argc != 2)
+		ft_exit("Too many arguments");
+	if (!has_extension(argv[1], "ber"))
+		ft_exit("File missing .ber extension");
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_exit("File does not exist or cannot be opened");
+	close(fd);
+}

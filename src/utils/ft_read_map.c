@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-char	**ft_read_map(t_game *game, char *path)
+char	**ft_read_map(t_config *game, char *path)
 {
 	int		fd;
 	char	*line;

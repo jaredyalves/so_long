@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	ft_image_init(t_game *game)
+static void	ft_image_init(t_config *game)
 {
 	game->img_0 = mlx_xpm_file_to_image(game->mlx, "./textures/0.xpm",
 			&game->img_width, &game->img_height);
@@ -26,7 +26,7 @@ static void	ft_image_init(t_game *game)
 			&game->img_width, &game->img_height);
 }
 
-static void	ft_window_init(t_game *game)
+static void	ft_window_init(t_config *game)
 {
 	int	i;
 
